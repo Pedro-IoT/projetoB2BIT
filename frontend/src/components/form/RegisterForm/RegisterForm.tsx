@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Input } from '@/components/form/Input/Input';
 import { Button } from '@/components/ui/Button/Button';
+import { useRegister } from '@/hooks/useAuth';
+import { handleSubmitRegister } from '@/services/ApiService';
+import { toast } from 'react-toastify';
 import {
   IconeEmail,
   IconeSenha,
@@ -10,10 +13,22 @@ import {
 
 export const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { Register, isRegisterLoading } = useRegister();
 
   return (
-    <form className="flex flex-col gap-6">
+    <form
+      className="flex flex-col gap-6"
+      onSubmit={e => {
+        const dataOrError = handleSubmitRegister(e);
+        if (dataOrError instanceof Error) {
+          toast.error('Informações inválidas');
+          return;
+        }
+        Register(dataOrError.name, dataOrError.email, dataOrError.password);
+      }}
+    >
       <Input
+        name="name"
         label="Nome"
         type="text"
         placeholder="Insira o seu nome"
@@ -21,6 +36,7 @@ export const RegisterForm = () => {
       />
 
       <Input
+        name="email"
         label="E-mail"
         type="email"
         placeholder="Insira o seu e-mail"
@@ -28,6 +44,7 @@ export const RegisterForm = () => {
       />
 
       <Input
+        name="password"
         label="Senha"
         type={showPassword ? 'text' : 'password'}
         placeholder="Insira sua senha"
@@ -41,8 +58,8 @@ export const RegisterForm = () => {
           </button>
         }
       />
-      <Button type="submit" variant="primary">
-        Continuar
+      <Button type="submit" variant="primary" disabled={isRegisterLoading}>
+        {isRegisterLoading ? 'Continuando...' : 'Continuar'}
       </Button>
     </form>
   );

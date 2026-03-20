@@ -25,7 +25,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <input
             ref={ref}
             id={inputId}
-            className={`border-card-bg placeholder:text-secondary-400 focus:ring-primary w-full rounded-lg border bg-transparent px-4 py-3 text-lg transition-all duration-200 focus:ring-2 focus:ring-offset-1 ${rightIcon ? 'pr-12' : ''} ${error ? 'ring-2 ring-red-500' : ''} ${className || ''}`}
+            className={`border-card-bg placeholder:text-secondary-400 focus:ring-primary w-full rounded-lg border bg-transparent px-4 py-3 text-lg transition-all duration-200 focus:ring-2 focus:outline-none ${rightIcon ? 'pr-12' : ''} ${className || ''}`}
             {...props}
           />
 
@@ -35,8 +35,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             </div>
           )}
         </div>
-
-        {error && <span className="text-sm text-red-500">{error}</span>}
       </div>
     );
   }
