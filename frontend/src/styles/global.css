@@ -1,0 +1,26 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-bg-100: #fafafa;
+  --color-primary: #0d93f2;
+  --color-secondary-400: #62748e;
+  --color-secondary-500: #90a1b9;
+  --color-footer-400: #94a3b8;
+  --color-footer-500: #02274f;
+  --color-heart: #eb5757;
+  --color-card-bg: #e2e8f0;
+  --color-card-bg-dark: #1d293d;
+  --background-image-dark: linear-gradient(116.82deg, #0f172b 0%, #070b14 100%);
+
+  --font-sans: 'Manrope', sans-serif;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src:
+    local('Manrope'),
+    url('/fonts/Manrope-VariableFont_wght.ttf') format('truetype');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: auto;
+}
