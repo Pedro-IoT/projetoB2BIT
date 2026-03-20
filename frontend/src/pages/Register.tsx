@@ -1,42 +1,37 @@
-import { LoginForm } from '@/components/form/LoginForm/LoginForm';
+import { RegisterForm } from '@/components/form/RegisterForm/RegisterForm';
 import { Button } from '@/components/ui/Button/Button';
 import { Link } from '@tanstack/react-router';
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   return (
     <div className="bg-bg-100 flex min-h-screen justify-center px-4 pt-30">
       <div className="w-full max-w-120 rounded-2xl">
         <h1 className="text-primary mb-14 text-center text-[40px] leading-[120%] font-bold tracking-[-0.27px]">
           Mini Twitter
         </h1>
-
         <div className="flex flex-col">
           <div className="flex w-full items-center">
-            <Button variant="navigationActive" className="flex-1">
-              Login
-            </Button>
             <Button variant="navigationInactive" className="flex-1">
               <Link
-                to="/register"
+                to="/login"
                 className="flex h-full w-full items-center justify-center"
               >
-                Cadastrar
+                Login
               </Link>
             </Button>
+            <Button variant="navigationActive" className="flex-1">
+              Cadastrar
+            </Button>
           </div>
-
           <div className="mt-13 mb-8">
             <h2 className="text-primary mb-1 text-3xl font-bold">
-              Olá, de novo!
+              Olá, vamos começar!
             </h2>
             <p className="text-secondary-400 text-sm">
-              {' '}
-              Por favor, insira os seus dados para fazer login.
+              Por favor, insira os dados solicitados para fazer cadastro.
             </p>
           </div>
-
-          <LoginForm />
-
+          <RegisterForm />
           <footer className="text-footer-500 mt-10 text-center text-[12px] leading-4">
             Ao clicar em continuar, você concorda com nossos <br />
             <span className="underline">Termos de Serviço</span> e{' '}

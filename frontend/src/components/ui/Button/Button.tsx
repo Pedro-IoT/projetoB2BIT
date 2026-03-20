@@ -1,4 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
+import { Link } from '@tanstack/react-router';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?:
