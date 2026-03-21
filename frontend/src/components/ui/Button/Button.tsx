@@ -22,12 +22,12 @@ export const Button = ({
     primary:
       'rounded-full w-full bg-primary text-white filter hover:translate-y-[-2px] py-2 text-lg shadow-xs',
     secondary:
-      'rounded-full w-full bg-transparent text-secondary-400 py-2 px-4 hover:translate-y-[-2px]',
+      'rounded-full w-full bg-transparent text-secondary-400 py-2 px-4 hover:translate-y-[-2px] dark:text-white dark:border-border-dark',
     post: 'rounded-full w-23 bg-primary text-white h-[33px] hover:translate-y-[-2px]',
     navigationActive:
-      '!font-bold rounded-none px-6 py-2 border-b-[3px] border-b-primary bg-transparent text-primary',
+      '!font-bold dark:text-bg-100 rounded-none px-6 py-2 border-b-[3px] border-b-primary bg-transparent text-primary',
     navigationInactive:
-      '!font-bold rounded-none px-6 py-2 border-b border-b-secondary-400/20 bg-transparent text-secondary-400 hover:text-primary',
+      '!font-bold dark:text-secondary-500 rounded-none px-6 py-2 border-b border-b-secondary-400/20 bg-transparent text-secondary-400 hover:text-primary',
   };
   return (
     <button

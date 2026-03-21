@@ -1,11 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { FeedCard } from '@/components/feed/feedCard/FeedCard';
 import { FeedForm } from '@/components/form/feedForm/FeedForm';
 import { useGetPosts } from '@/hooks/usePost';
+import { useSearchStore } from '@/store/searchStore';
 import { toast } from 'react-toastify';
 
 export const FeedPage = () => {
-  const { posts, isLoadingPosts, error } = useGetPosts();
+  const searchTerm = useSearchStore(state => state.searchTerm);
+  const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(searchTerm);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [searchTerm]);
+
+  const { posts, isLoadingPosts, error } = useGetPosts(
+    debouncedSearch || undefined
+  );
 
   useEffect(() => {
     if (error) {
@@ -30,7 +43,9 @@ export const FeedPage = () => {
 
       {posts.length === 0 ? (
         <p className="text-secondary-400 mt-8 text-center text-lg">
-          Nenhum post encontrado. Seja o primeiro a postar!
+          {debouncedSearch
+            ? 'Nenhum post encontrado para sua busca.'
+            : 'Nenhum post encontrado. Seja o primeiro a postar!'}
         </p>
       ) : (
         posts.map(post => (
@@ -43,6 +58,7 @@ export const FeedPage = () => {
             createdAt={post.createdAt}
             authorName={post.authorName}
             likesCount={post.likesCount}
+            isLikedByUser={post.isLikedByUser}
             {...(post.image ? { image: post.image } : {})}
           />
         ))

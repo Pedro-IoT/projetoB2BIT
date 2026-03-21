@@ -22,6 +22,7 @@ export type PostResponse = {
   createdAt: string;
   authorName: string;
   likesCount: number;
+  isLikedByUser: boolean;
 };
 
 export type GetPostsResponse = {
@@ -74,9 +75,11 @@ export function handleSubmitPost(
   return validationResult.data;
 }
 
-export async function getPosts(): Promise<GetPostsResponse> {
+export async function getPosts(search?: string): Promise<GetPostsResponse> {
   try {
-    const response = await api.get<GetPostsResponse>('/');
+    const response = await api.get<GetPostsResponse>('/', {
+      params: search ? { search } : undefined,
+    });
     return response.data;
   } catch (error) {
     throw new Error('Failed to fetch posts');

@@ -18,10 +18,6 @@ export const useCreatePost = () => {
     mutationKey: ['createPost'],
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] });
-      toast.success('Post criado com sucesso!');
-    },
-    onError: () => {
-      toast.error('Falha ao criar post. Tente novamente.');
     },
   });
 
@@ -39,14 +35,14 @@ export const useCreatePost = () => {
   };
 };
 
-export const useGetPosts = () => {
+export const useGetPosts = (search?: string) => {
   const {
     data,
     isLoading: isLoadingPosts,
     error,
   } = useQuery<GetPostsResponse, Error>({
-    queryKey: ['posts'],
-    queryFn: getPosts,
+    queryKey: ['posts', search],
+    queryFn: () => getPosts(search),
   });
 
   return {
@@ -63,10 +59,6 @@ export const useDeletePost = () => {
     mutationKey: ['deletePost'],
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] });
-      toast.success('Post deletado com sucesso!');
-    },
-    onError: () => {
-      toast.error('Falha ao deletar post. Tente novamente.');
     },
   });
 
@@ -92,10 +84,6 @@ export const useEditPost = () => {
     mutationKey: ['editPost'],
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] });
-      toast.success('Post editado com sucesso!');
-    },
-    onError: () => {
-      toast.error('Falha ao editar post. Tente novamente.');
     },
   });
 
@@ -120,9 +108,6 @@ export const useToggleLike = () => {
     mutationKey: ['toggleLike'],
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['posts'] });
-    },
-    onError: () => {
-      toast.error('Falha ao curtir/descurtir post. Tente novamente.');
     },
   });
 

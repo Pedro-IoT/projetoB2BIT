@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { z } from 'zod';
 
-const loginSchema = z.object({
-  email: z.email({ message: 'Credenciais inválidas' }),
-  password: z.string().min(4, { message: 'Credenciais inválidas' }),
+export const loginSchema = z.object({
+  email: z.email({ message: 'E-mail inválido' }),
+  password: z
+    .string()
+    .min(4, { message: 'Senha deve ter pelo menos 4 caracteres' }),
 });
 
-type LoginData = z.infer<typeof loginSchema>;
+export type LoginData = z.infer<typeof loginSchema>;
 
 type LoginResponse = {
   token: string;
@@ -51,15 +53,15 @@ export function handleSubmitLogin(
   return validation.data;
 }
 
-const registerSchema = z.object({
+export const registerSchema = z.object({
   name: z.string().min(2, { message: 'Nome deve ter pelo menos 2 caracteres' }),
-  email: z.email({ message: 'Email inválido' }),
+  email: z.email({ message: 'E-mail inválido' }),
   password: z
     .string()
     .min(4, { message: 'Senha deve ter pelo menos 4 caracteres' }),
 });
 
-type RegisterData = z.infer<typeof registerSchema>;
+export type RegisterData = z.infer<typeof registerSchema>;
 
 export async function register(data: RegisterData) {
   try {

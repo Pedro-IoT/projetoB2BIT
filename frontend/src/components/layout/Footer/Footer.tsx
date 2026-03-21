@@ -9,7 +9,7 @@ export default function Footer() {
 
   if (isAuthPage) {
     return (
-      <footer className="text-footer-500 hover:text-primary bg-bg-100 flex h-13.75 w-full shrink-0 items-center justify-end px-10 py-4">
+      <footer className="text-footer-500 hover:text-primary bg-bg-100 dark:bg-dark flex h-13.75 w-full shrink-0 items-center justify-end px-10 py-4">
         <ButtonTheme />
       </footer>
     );
@@ -17,15 +17,15 @@ export default function Footer() {
 
   if (isFeedPage) {
     return (
-      <footer className="bg-bg-100 fixed right-0 bottom-0 left-0 z-40 flex h-13.75 w-full items-center px-10 py-4">
+      <footer className="bg-bg-100 dark:bg-dark dark:bg-bg-dark fixed right-0 bottom-0 left-0 z-40 flex h-13.75 w-full items-center px-10 py-4">
         <div className="mx-10 flex w-full items-center justify-between">
           <a
-            className="text-primary justify-self-start text-[18px] font-bold"
+            className="text-primary justify-self-start text-[18px] font-bold dark:text-white"
             href="#feed-page"
           >
             Mini Twitter
           </a>
-          <div className="text-footer-500 hover:text-primary">
+          <div className="text-footer-500 dark:text-footer-400 hover:text-primary">
             <ButtonTheme />
           </div>
         </div>

@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/form/Input/Input';
 import { Button } from '@/components/ui/Button/Button';
 import { useLogin } from '@/hooks/useAuth';
-import { handleSubmitLogin } from '@/services/AuthService';
-import { toast } from 'react-toastify';
+import { loginSchema, type LoginData } from '@/services/AuthService';
 import {
   IconeEmail,
   IconeSenha,
@@ -14,31 +15,35 @@ export const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { Login, isLoginLoading } = useLogin();
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = (data: LoginData) => {
+    Login(data.email, data.password);
+  };
+
   return (
-    <form
-      className="flex flex-col gap-6"
-      onSubmit={e => {
-        const dataOrError = handleSubmitLogin(e);
-        if (dataOrError instanceof Error) {
-          toast.error('Credenciais inválidas');
-          return;
-        }
-        Login(dataOrError.email, dataOrError.password);
-      }}
-    >
+    <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
       <Input
-        name="email"
+        {...register('email')}
         label="E-mail"
         type="email"
         placeholder="Insira o seu e-mail"
+        error={errors.email?.message}
         rightIcon={<IconeEmail />}
       />
 
       <Input
-        name="password"
+        {...register('password')}
         label="Senha"
         type={showPassword ? 'text' : 'password'}
         placeholder="Insira a sua senha"
+        error={errors.password?.message}
         rightIcon={
           <button
             type="button"

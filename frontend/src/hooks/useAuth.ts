@@ -7,17 +7,14 @@ import { toast } from 'react-toastify';
 export const useLogin = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const setToken = useAuthStore(state => state.setToken);
+  const setAuth = useAuthStore(state => state.setAuth);
   const loginMutation = useMutation({
     mutationFn: ({ email, password }: { email: string; password: string }) =>
       login({ email, password }),
     mutationKey: ['login'],
     onSuccess: data => {
-      setToken(data.token);
+      setAuth(data.token, data.user);
       navigate({ to: '/feed' });
-    },
-    onError: () => {
-      toast.error('Falha no login. Verifique suas credenciais.');
     },
   });
 
@@ -48,9 +45,6 @@ export const useRegister = () => {
     mutationKey: ['register'],
     onSuccess: () => {
       navigate({ to: '/feed' });
-    },
-    onError: () => {
-      toast.error('Falha no registro. Verifique suas informações.');
     },
   });
 
