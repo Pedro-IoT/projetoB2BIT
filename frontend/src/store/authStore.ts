@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { logout } from '@/services/AuthService';
 
 interface AuthState {
   token: string | null;
@@ -16,6 +17,7 @@ export const useAuthStore = create<AuthState>(set => ({
     set({ token, isAuthenticated: true });
   },
   logout: () => {
+    logout();
     localStorage.removeItem('token');
     set({ token: null, isAuthenticated: false });
   },

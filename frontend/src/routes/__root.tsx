@@ -10,14 +10,12 @@ export const Route = createRootRoute({
 
 function RootComponent() {
   return (
-    <div className="bg-bg-100 flex min-h-dvh flex-col">
+    <div className="bg-bg-100 flex h-dvh flex-col overflow-hidden">
       <ToastContainer position="top-right" autoClose={3000} />
-      <main className="flex-1">
+      <main className="flex-1 overflow-y-auto pb-16">
         <Outlet />
       </main>
       <Footer />
-      {/** <TanStackRouterDevtools /> */}
-      <TanStackRouterDevtools />
     </div>
   );
 }

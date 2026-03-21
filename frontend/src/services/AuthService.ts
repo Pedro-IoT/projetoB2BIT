@@ -91,7 +91,7 @@ export function handleSubmitRegister(
 export async function logout() {
   try {
     await api.post('/auth/logout');
-  } finally {
-    localStorage.removeItem('token');
+  } catch (error) {
+    throw new Error('Logout failed');
   }
 }

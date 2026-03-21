@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Input } from '@/components/form/Input/Input';
 import { Button } from '@/components/ui/Button/Button';
 import { useRegister } from '@/hooks/useAuth';
-import { handleSubmitRegister } from '@/services/ApiService';
+import { handleSubmitRegister } from '@/services/AuthService';
 import { toast } from 'react-toastify';
 import {
   IconeEmail,
@@ -58,7 +58,12 @@ export const RegisterForm = () => {
           </button>
         }
       />
-      <Button type="submit" variant="primary" disabled={isRegisterLoading}>
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={isRegisterLoading}
+        className="py-4"
+      >
         {isRegisterLoading ? 'Continuando...' : 'Continuar'}
       </Button>
     </form>

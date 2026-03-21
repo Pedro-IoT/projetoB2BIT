@@ -14,6 +14,7 @@ import { Route as rootRouteImport } from './routes/__root'
 
 const RegisterLazyRouteImport = createFileRoute('/register')()
 const LoginLazyRouteImport = createFileRoute('/login')()
+const FeedLazyRouteImport = createFileRoute('/feed')()
 
 const RegisterLazyRoute = RegisterLazyRouteImport.update({
   id: '/register',
@@ -25,29 +26,38 @@ const LoginLazyRoute = LoginLazyRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/login.lazy').then((d) => d.Route))
+const FeedLazyRoute = FeedLazyRouteImport.update({
+  id: '/feed',
+  path: '/feed',
+  getParentRoute: () => rootRouteImport,
+} as any).lazy(() => import('./routes/feed.lazy').then((d) => d.Route))
 
 export interface FileRoutesByFullPath {
+  '/feed': typeof FeedLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
 }
 export interface FileRoutesByTo {
+  '/feed': typeof FeedLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/feed': typeof FeedLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/register'
+  fullPaths: '/feed' | '/login' | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/register'
-  id: '__root__' | '/login' | '/register'
+  to: '/feed' | '/login' | '/register'
+  id: '__root__' | '/feed' | '/login' | '/register'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  FeedLazyRoute: typeof FeedLazyRoute
   LoginLazyRoute: typeof LoginLazyRoute
   RegisterLazyRoute: typeof RegisterLazyRoute
 }
@@ -68,10 +78,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/feed': {
+      id: '/feed'
+      path: '/feed'
+      fullPath: '/feed'
+      preLoaderRoute: typeof FeedLazyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  FeedLazyRoute: FeedLazyRoute,
   LoginLazyRoute: LoginLazyRoute,
   RegisterLazyRoute: RegisterLazyRoute,
 }

@@ -163,3 +163,132 @@ export const IconeLua = () => {
     </svg>
   );
 };
+
+export const IconeLupa = () => {
+  return (
+    <svg
+      width={18}
+      height={18}
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.625 15.75C12.56 15.75 15.75 12.56 15.75 8.625C15.75 4.68997 12.56 1.5 8.625 1.5C4.68997 1.5 1.5 4.68997 1.5 8.625C1.5 12.56 4.68997 15.75 8.625 15.75Z"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M16.5 16.5L15 15"
+        stroke="currentColor"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const IconeSair = () => {
+  return (
+    <svg
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M7.4165 6.29995C7.67484 3.29995 9.2165 2.07495 12.5915 2.07495H12.6998C16.4248 2.07495 17.9165 3.56662 17.9165 7.29162V12.725C17.9165 16.45 16.4248 17.9416 12.6998 17.9416H12.5915C9.2415 17.9416 7.69984 16.7333 7.42484 13.7833"
+        stroke="#FAFAFA"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M12.4999 10H3.0166"
+        stroke="#FAFAFA"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.87516 7.20825L2.0835 9.99992L4.87516 12.7916"
+        stroke="#FAFAFA"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const IconeImagem = () => {
+  return (
+    <svg
+      width={32}
+      height={32}
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        x="3"
+        y="4"
+        width="26"
+        height="24"
+        rx="4"
+        stroke="#0D93F2"
+        strokeWidth={2}
+      />
+      <circle cx="11" cy="11" r="2.5" stroke="#0D93F2" strokeWidth={2} />
+      <path
+        d="M5 24L12 17L16 21L21 16L27 22"
+        stroke="#0D93F2"
+        strokeWidth={2}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const IconeLike = () => {
+  return (
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.62 20.8101C12.28 20.9301 11.72 20.9301 11.38 20.8101C8.48 19.8201 2 15.6901 2 8.6901C2 5.6001 4.49 3.1001 7.56 3.1001C9.38 3.1001 10.99 3.9801 12 5.3401C13.01 3.9801 14.63 3.1001 16.44 3.1001C19.51 3.1001 22 5.6001 22 8.6901C22 15.6901 15.52 19.8201 12.62 20.8101Z"
+        stroke="#EB5757"
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export const IconeLikePreenchido = () => {
+  return (
+    <svg
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M16.4404 3.59998C19.2317 3.60021 21.4999 5.87384 21.5 8.68982C21.5 9.82544 21.3185 10.8737 21.0039 11.8461L21.0029 11.849C20.2487 14.2357 18.7033 16.1595 17.0352 17.5931C15.3649 19.0286 13.6004 19.9479 12.459 20.3363L12.4531 20.3383C12.3532 20.3734 12.189 20.3998 12 20.3998C11.811 20.3998 11.6468 20.3734 11.5469 20.3383L11.541 20.3363C10.3996 19.9479 8.63512 19.0286 6.96484 17.5931C5.29669 16.1595 3.75127 14.2357 2.99707 11.849L2.99609 11.8461L2.88379 11.4779C2.63838 10.6104 2.5 9.68347 2.5 8.68982C2.50008 5.87384 4.76829 3.60021 7.55957 3.59998C9.20459 3.59998 10.6795 4.39957 11.5996 5.62927L12 6.16443L12.4004 5.62927C13.3205 4.39957 14.7954 3.59998 16.4404 3.59998Z"
+        fill="#EB5757"
+        stroke="#EB5757"
+      />
+    </svg>
+  );
+};

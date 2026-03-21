@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Input } from '@/components/form/Input/Input';
 import { Button } from '@/components/ui/Button/Button';
 import { useLogin } from '@/hooks/useAuth';
-import { handleSubmitLogin } from '@/services/ApiService';
+import { handleSubmitLogin } from '@/services/AuthService';
 import { toast } from 'react-toastify';
 import {
   IconeEmail,
@@ -49,7 +49,12 @@ export const LoginForm = () => {
           </button>
         }
       />
-      <Button type="submit" variant="primary" disabled={isLoginLoading}>
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={isLoginLoading}
+        className="py-4"
+      >
         {isLoginLoading ? 'Continuando...' : 'Continuar'}
       </Button>
     </form>

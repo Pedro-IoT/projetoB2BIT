@@ -20,10 +20,10 @@ export const Button = ({
     'font-medium transition-colors duration-200 flex items-center justify-center cursor-pointer';
   const variantStyles = {
     primary:
-      'rounded-full w-full bg-primary text-white filter hover:brightness-125 py-3 text-lg shadow-xs',
+      'rounded-full w-full bg-primary text-white filter hover:translate-y-[-2px] py-2 text-lg shadow-xs',
     secondary:
-      'rounded-full w-full bg-transparent text-white outline outline-1 outline-secondary-400',
-    post: 'rounded-full w-full bg-primary text-white',
+      'rounded-full w-full bg-transparent text-secondary-400 py-2 px-4 hover:translate-y-[-2px]',
+    post: 'rounded-full w-23 bg-primary text-white h-[33px] hover:translate-y-[-2px]',
     navigationActive:
       '!font-bold rounded-none px-6 py-2 border-b-[3px] border-b-primary bg-transparent text-primary',
     navigationInactive:
