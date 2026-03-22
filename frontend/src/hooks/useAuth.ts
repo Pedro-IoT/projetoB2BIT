@@ -19,11 +19,13 @@ export const useLogin = () => {
   });
 
   const handleLogin = async (email: string, password: string) => {
-    await toast.promise(loginMutation.mutateAsync({ email, password }), {
-      pending: 'Realizando login...',
-      success: 'Login realizado com sucesso!',
-      error: 'Falha no login. Verifique suas credenciais.',
-    });
+    try {
+      await toast.promise(loginMutation.mutateAsync({ email, password }), {
+        pending: 'Realizando login...',
+        success: 'Login realizado com sucesso!',
+        error: 'Falha no login. Verifique suas credenciais.',
+      });
+    } catch (error) {}
   };
 
   return { Login: handleLogin, isLoginLoading: loginMutation.isPending };
@@ -53,14 +55,16 @@ export const useRegister = () => {
     email: string,
     password: string
   ) => {
-    await toast.promise(
-      registerMutation.mutateAsync({ name, email, password }),
-      {
-        pending: 'Realizando registro...',
-        success: 'Registro realizado com sucesso!',
-        error: 'Falha no registro. Verifique suas informações.',
-      }
-    );
+    try {
+      await toast.promise(
+        registerMutation.mutateAsync({ name, email, password }),
+        {
+          pending: 'Realizando registro...',
+          success: 'Registro realizado com sucesso!',
+          error: 'Falha no registro. Verifique suas informações.',
+        }
+      );
+    } catch (error) {}
   };
 
   return {

@@ -9,7 +9,7 @@ export default function Footer() {
 
   if (isAuthPage) {
     return (
-      <footer className="text-footer-500 hover:text-primary bg-bg-100 dark:bg-dark flex h-13.75 w-full shrink-0 items-center justify-end px-10 py-4">
+      <footer className="text-footer-500 hover:text-primary flex h-13.75 w-full items-center justify-end bg-transparent px-10 py-4">
         <ButtonTheme />
       </footer>
     );

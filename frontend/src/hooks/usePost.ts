@@ -26,11 +26,13 @@ export const useCreatePost = () => {
   });
 
   const handleCreatePost = async (data: PostData) => {
-    await toast.promise(createPostMutation.mutateAsync(data), {
-      pending: 'Criando post...',
-      success: 'Post criado com sucesso!',
-      error: 'Falha ao criar post. Tente novamente.',
-    });
+    try {
+      await toast.promise(createPostMutation.mutateAsync(data), {
+        pending: 'Criando post...',
+        success: 'Post criado com sucesso!',
+        error: 'Falha ao criar post. Tente novamente.',
+      });
+    } catch (error) {}
   };
 
   return {
@@ -80,11 +82,13 @@ export const useDeletePost = () => {
   });
 
   const handleDeletePost = async (postId: number) => {
-    await toast.promise(deletePostMutation.mutateAsync(postId), {
-      pending: 'Deletando post...',
-      success: 'Post deletado com sucesso!',
-      error: 'Falha ao deletar post. Tente novamente.',
-    });
+    try {
+      await toast.promise(deletePostMutation.mutateAsync(postId), {
+        pending: 'Deletando post...',
+        success: 'Post deletado com sucesso!',
+        error: 'Falha ao deletar post. Tente novamente.',
+      });
+    } catch (error) {}
   };
 
   return {
@@ -105,11 +109,13 @@ export const useEditPost = () => {
   });
 
   const handleEditPost = async (postId: number, data: PostData) => {
-    await toast.promise(editPostMutation.mutateAsync({ postId, data }), {
-      pending: 'Editando post...',
-      success: 'Post editado com sucesso!',
-      error: 'Falha ao editar post. Tente novamente.',
-    });
+    try {
+      await toast.promise(editPostMutation.mutateAsync({ postId, data }), {
+        pending: 'Editando post...',
+        success: 'Post editado com sucesso!',
+        error: 'Falha ao editar post. Tente novamente.',
+      });
+    } catch (error) {}
   };
 
   return {
@@ -129,11 +135,13 @@ export const useToggleLike = () => {
   });
 
   const handleToggleLike = async (postId: number) => {
-    await toast.promise(toggleLikeMutation.mutateAsync(postId), {
-      pending: 'Processando...',
-      success: 'Ação realizada com sucesso!',
-      error: 'Falha ao reagir ao post. Tente novamente.',
-    });
+    try {
+      await toast.promise(toggleLikeMutation.mutateAsync(postId), {
+        pending: 'Processando...',
+        success: 'Ação realizada com sucesso!',
+        error: 'Falha ao reagir ao post. Tente novamente.',
+      });
+    } catch (error) {}
   };
 
   return {
