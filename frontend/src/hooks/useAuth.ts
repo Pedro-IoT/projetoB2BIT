@@ -3,6 +3,8 @@ import { useNavigate } from '@tanstack/react-router';
 import { login, register } from '@/services/AuthService';
 import { useAuthStore } from '@/store/authStore';
 import { toast } from 'react-toastify';
+import { unknown } from 'zod';
+import { AxiosError } from 'node_modules/axios/index.cjs';
 
 export const useLogin = () => {
   const navigate = useNavigate();
@@ -61,7 +63,14 @@ export const useRegister = () => {
         {
           pending: 'Realizando registro...',
           success: 'Registro realizado com sucesso!',
-          error: 'Falha no registro. Verifique suas informações.',
+          error: {
+            render({ data }: any) {
+              if (data?.response?.status === 400) {
+                return 'Email já está em uso. Por favor, use outro email.';
+              }
+              return 'Falha no registro. Verifique suas informações.';
+            },
+          },
         }
       );
     } catch (error) {}
