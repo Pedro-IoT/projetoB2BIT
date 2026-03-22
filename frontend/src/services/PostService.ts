@@ -75,10 +75,10 @@ export function handleSubmitPost(
   return validationResult.data;
 }
 
-export async function getPosts(search?: string): Promise<GetPostsResponse> {
+export async function getPosts(search?: string, page: number = 1): Promise<GetPostsResponse> {
   try {
     const response = await api.get<GetPostsResponse>('/', {
-      params: search ? { search } : undefined,
+      params: { search, page },
     });
     return response.data;
   } catch (error) {

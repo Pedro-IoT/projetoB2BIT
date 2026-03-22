@@ -10,7 +10,10 @@ export function Header() {
   const setSearchTerm = useSearchStore(state => state.setSearchTerm);
 
   return (
-    <header className="border-b-card-bg dark:bg-bg-dark dark:border-b-border-dark w-full border border-x-0 border-t-0">
+    <header
+      id="feed-page"
+      className="border-b-card-bg dark:bg-bg-dark dark:border-b-border-dark w-full border border-x-0 border-t-0"
+    >
       <div className="mx-10 grid grid-cols-[1fr_minmax(260px,520px)_1fr] items-center gap-4 px-4 py-3">
         <h1 className="text-primary justify-self-start text-[18px] font-bold dark:text-white">
           Mini Twitter

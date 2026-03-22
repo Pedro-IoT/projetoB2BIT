@@ -1,4 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import {
+  useMutation,
+  useInfiniteQuery,
+  useQueryClient,
+} from '@tanstack/react-query';
 import {
   PostData,
   createPost,
@@ -40,15 +44,28 @@ export const useGetPosts = (search?: string) => {
     data,
     isLoading: isLoadingPosts,
     error,
-  } = useQuery<GetPostsResponse, Error>({
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery({
     queryKey: ['posts', search],
-    queryFn: () => getPosts(search),
+    queryFn: ({ pageParam }) => getPosts(search, pageParam),
+    initialPageParam: 1,
+    getNextPageParam: lastPage => {
+      const hasMore = lastPage.page * lastPage.limit < lastPage.total;
+      return hasMore ? lastPage.page + 1 : undefined;
+    },
   });
 
+  const posts = data?.pages.flatMap(page => page.posts) ?? [];
+
   return {
-    posts: data?.posts ?? [],
+    posts,
     isLoadingPosts,
     error,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
   };
 };
 

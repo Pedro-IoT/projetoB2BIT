@@ -57,12 +57,14 @@ export const EditPostModal = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-      <div className="w-full max-w-lg rounded-lg bg-white p-6 shadow-xl">
+      <div className="dark:bg-card-bg-dark w-full max-w-lg rounded-lg bg-white p-6 shadow-xl">
         <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-[#314158]">Editar Post</h2>
+          <h2 className="text-lg font-bold text-[#314158] dark:text-white">
+            Editar Post
+          </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700"
+            className="text-gray-500 hover:cursor-pointer hover:text-gray-700 dark:text-white dark:hover:text-gray-300"
             aria-label="Fechar"
           >
             <IconeFechar />
@@ -71,12 +73,12 @@ export const EditPostModal = ({
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-200">
               Titulo
             </label>
             <input
               {...register('title')}
-              className={`w-full rounded-md border p-2 focus:outline-none ${
+              className={`w-full rounded-md border p-2 focus:outline-none dark:border-gray-500 ${
                 errors.title
                   ? 'border-red-500 focus:border-red-500'
                   : 'focus:border-primary border-gray-300'
@@ -90,13 +92,13 @@ export const EditPostModal = ({
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-200">
               Conteudo
             </label>
             <textarea
               {...register('content')}
               rows={4}
-              className={`w-full resize-none rounded-md border p-2 focus:outline-none ${
+              className={`w-full resize-none rounded-md border p-2 focus:outline-none dark:border-gray-500 ${
                 errors.content
                   ? 'border-red-500 focus:border-red-500'
                   : 'focus:border-primary border-gray-300'
@@ -110,12 +112,12 @@ export const EditPostModal = ({
           </div>
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-gray-700">
+            <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-200">
               URL da Imagem (opcional)
             </label>
             <input
               {...register('imageUrl')}
-              className={`w-full rounded-md border p-2 focus:outline-none ${
+              className={`w-full rounded-md border p-2 focus:outline-none dark:border-gray-500 ${
                 errors.imageUrl
                   ? 'border-red-500 focus:border-red-500'
                   : 'focus:border-primary border-gray-300'
