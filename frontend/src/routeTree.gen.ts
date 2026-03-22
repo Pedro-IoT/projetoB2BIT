@@ -11,6 +11,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
 
 const RegisterLazyRouteImport = createFileRoute('/register')()
 const LoginLazyRouteImport = createFileRoute('/login')()
@@ -31,32 +32,41 @@ const FeedLazyRoute = FeedLazyRouteImport.update({
   path: '/feed',
   getParentRoute: () => rootRouteImport,
 } as any).lazy(() => import('./routes/feed.lazy').then((d) => d.Route))
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
   '/feed': typeof FeedLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof IndexRoute
   '/feed': typeof FeedLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
   '/feed': typeof FeedLazyRoute
   '/login': typeof LoginLazyRoute
   '/register': typeof RegisterLazyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/feed' | '/login' | '/register'
+  fullPaths: '/' | '/feed' | '/login' | '/register'
   fileRoutesByTo: FileRoutesByTo
-  to: '/feed' | '/login' | '/register'
-  id: '__root__' | '/feed' | '/login' | '/register'
+  to: '/' | '/feed' | '/login' | '/register'
+  id: '__root__' | '/' | '/feed' | '/login' | '/register'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
   FeedLazyRoute: typeof FeedLazyRoute
   LoginLazyRoute: typeof LoginLazyRoute
   RegisterLazyRoute: typeof RegisterLazyRoute
@@ -85,10 +95,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeedLazyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
   FeedLazyRoute: FeedLazyRoute,
   LoginLazyRoute: LoginLazyRoute,
   RegisterLazyRoute: RegisterLazyRoute,
