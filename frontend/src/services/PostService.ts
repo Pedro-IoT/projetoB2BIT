@@ -33,7 +33,7 @@ export type GetPostsResponse = {
 };
 
 const api = axios.create({
-  baseURL: '/api/posts',
+  baseURL: 'http://localhost:3000/posts',
 });
 
 api.interceptors.request.use(config => {
@@ -75,7 +75,10 @@ export function handleSubmitPost(
   return validationResult.data;
 }
 
-export async function getPosts(search?: string, page: number = 1): Promise<GetPostsResponse> {
+export async function getPosts(
+  search?: string,
+  page: number = 1
+): Promise<GetPostsResponse> {
   try {
     const response = await api.get<GetPostsResponse>('/', {
       params: { search, page },

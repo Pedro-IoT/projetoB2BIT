@@ -1,0 +1,17 @@
+services:
+  backend:
+    build:
+      context: ./mini-twitter-backend-main
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: sh -c "bun run seed && bun run src/index.ts"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
